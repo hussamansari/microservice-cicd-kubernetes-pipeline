@@ -4,7 +4,6 @@ pipeline {
 	    stage('Checkout') {
 		    steps {
 			    git credentialsId: 'Github_credentials', url: 'https://github.com/hussamansari/microservice-cicd-kubernetes-pipeline.git'
-			    checkout scm
 		    }
 	    }
 	    stage('Build image') {
