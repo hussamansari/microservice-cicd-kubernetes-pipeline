@@ -3,8 +3,11 @@ pipeline {
     stages {
 	    stage('Checkout') {
 		    steps {
-                git branch: 'main',
-			    git credentialsId: 'Github_credentials', url: 'https://github.com/hussamansari/microservice-cicd-kubernetes-pipeline.git'
+               git(
+                    branch: 'main',
+                    credentialsId: 'Github_credentials',
+                    url: 'https://github.com/hussamansari/microservice-cicd-kubernetes-pipeline.git'
+                )
 		    }
 	    }
 	    stage('Build image') {
