@@ -33,10 +33,11 @@ pipeline {
         stage('Authenticate to EKS') {
             steps {
                 sh '''
-                  aws eks update-kubeconfig \
-                    --region eu-north-1 \
-                    --name hussamcluster
-                '''
+          aws eks update-kubeconfig \
+            --region eu-north-1 \
+            --name hussamcluster \
+            --kubeconfig $WORKSPACE/kubeconfig
+        '''
             }
         }
 
@@ -46,7 +47,7 @@ pipeline {
                 sh 'ls -ltr'
                 sh 'pwd'
                 sh "sed -i 's/pipeline:latest/pipeline:${env.BUILD_ID}/g' deployment.yaml"
-                sh "kubectl apply -f deployment.yaml"
+                sh "KUBECONFIG=$WORKSPACE/kubeconfig kubectl apply -f deployment.yaml"
             }
         }
     }    
