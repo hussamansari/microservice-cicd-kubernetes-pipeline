@@ -1,25 +1,31 @@
 {% extends "base.html" %}
-{% block title %}My Pads{% endblock %}
+{% block title %}{{ pad.name }}{% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold">My Pads</h2>
-    <a href="{% url 'pad_create' %}" class="btn btn-primary">
-        + New Pad
-    </a>
+    <h2 class="fw-bold">{{ pad.name }}</h2>
+
+    <div>
+        <a href="{% url 'pad_edit' pad.id %}" class="btn btn-outline-secondary btn-sm me-2">
+            Edit Pad
+        </a>
+        <a href="{% url 'note_create' pad.id %}" class="btn btn-primary btn-sm">
+            + New Note
+        </a>
+    </div>
 </div>
 
-{% if pads %}
+{% if notes %}
 <div class="row">
-    {% for pad in pads %}
+    {% for note in notes %}
     <div class="col-md-4 mb-4">
         <div class="card note-card p-4">
-            <h5 class="fw-bold mb-2">{{ pad.name }}</h5>
+            <h6 class="fw-bold mb-2">{{ note.title }}</h6>
             <p class="text-muted mb-3">
-                {{ pad.notes.count }} notes
+                {{ note.text|truncatewords:20 }}
             </p>
-            <a href="{% url 'pad_detail' pad.id %}" class="btn btn-sm btn-outline-primary">
-                Open Pad
+            <a href="{% url 'note_detail' note.id %}" class="btn btn-sm btn-outline-primary">
+                View Note
             </a>
         </div>
     </div>
@@ -27,8 +33,8 @@
 </div>
 {% else %}
 <div class="empty-state">
-    <h5>No pads yet</h5>
-    <p>Create your first pad to start writing notes ✨</p>
+    <h5>No notes yet</h5>
+    <p>Add your first note to this pad ✍️</p>
 </div>
 {% endif %}
 {% endblock %}
