@@ -1,13 +1,23 @@
 {% extends "base.html" %}
-
-{% block title %}{{ note.name }}{% endblock %}
-{% block page_title %}<span>{{ note.name }}</span>{% endblock %}
+{% block title %}Delete Note{% endblock %}
 
 {% block content %}
-  <p>Are you sure you want to delete {{ note.name }}?</p>
-  <form method="POST">
-    {% csrf_token %}
-    <input type="submit" class="red" value="Yes, delete I want to delete it" />&nbsp;
-    <a href="{% url 'view_note' pk=note.id %}">Cancel</a>
-  </form>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4 text-center">
+            <h4 class="fw-bold text-danger mb-3">Delete Note</h4>
+            <p>Are you sure you want to delete <strong>{{ note.title }}</strong>?</p>
+
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger me-2">
+                    Yes, Delete
+                </button>
+                <a href="{% url 'pad_detail' note.pad.id %}" class="btn btn-outline-secondary">
+                    Cancel
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
