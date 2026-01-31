@@ -34,7 +34,7 @@ pipeline {
 			    sh 'ls -ltr'
 			    sh 'pwd'
 			    sh "sed -i 's/pipeline:latest/pipeline:${env.BUILD_ID}/g' deployment.yaml"
-                            sh "kubectl -f apply deployment.yaml"
+                            sh "kubectl apply -f deployment.yaml"
 	    		}
         	}
     	}    
