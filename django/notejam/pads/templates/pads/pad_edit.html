@@ -1,11 +1,25 @@
 {% extends "base.html" %}
-
-{% block title %}{{ pad.name }}{% endblock %}
-{% block page_title %}<span>{{ pad.name }}</span>{% endblock %}
+{% block title %}Edit Pad{% endblock %}
 
 {% block content %}
-  {% include "pads/pad_form.html" %}
-  <a class="red" href="{% url 'delete_pad' pk=pad.id %}">Delete pad</a>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h4 class="fw-bold mb-3">Edit Pad</h4>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
-
-
