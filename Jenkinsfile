@@ -2,7 +2,8 @@ pipeline {
     agent any	
     stages {
 	    stage('Checkout') {
-		    steps {
+				steps {
+			    git credentialsId: 'Github_credentials', url: 'https://github.com/arshad-ahmad/django-postgres-deployment-on-eks-through-jenkins'
 			    checkout scm
 		    }
 	    }
