@@ -1,14 +1,22 @@
 {% extends "base.html" %}
-{% load date_tags %}
-
-{% block title %}{{note.name}}{%endblock%}
-{% block page_title %}<span>{{note.name}}</span>{%endblock%}
+{% block title %}{{ note.title }}{% endblock %}
 
 {% block content %}
-  <p class="hidden-text">Last edited {{ note.updated_at|smart_date }}</p>
-  <div class="note">
-    {{ note.text }}
-  </div>
-  <a href="{% url 'edit_note' pk=note.id %}" class="button">Edit</a>
-  <a href="{% url 'delete_note' pk=note.id %}" class="delete-note">Delete it</a>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4">
+            <h3 class="fw-bold mb-3">{{ note.title }}</h3>
+            <p class="text-muted">{{ note.text|linebreaks }}</p>
+
+            <div class="mt-4">
+                <a href="{% url 'note_edit' note.id %}" class="btn btn-outline-primary me-2">
+                    Edit
+                </a>
+                <a href="{% url 'note_delete' note.id %}" class="btn btn-outline-danger">
+                    Delete
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
