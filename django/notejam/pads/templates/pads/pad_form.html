@@ -1,7 +1,23 @@
-<form class="pad" method="POST">
-  {% csrf_token %}
-  <label for="name">Name</label>
-  {{ form.name }}
-  {{ form.name.errors }}
-  <input type="submit" value="Save" />
-</form>
+{% extends "base.html" %}
+{% block title %}Pad{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    {{ form.name.label_tag }}
+                    {{ form.name }}
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
