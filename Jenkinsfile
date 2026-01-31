@@ -3,11 +3,8 @@ pipeline {
     stages {
 	    stage('Checkout') {
 		    steps {
-               git(
-                    branch: 'main',
-                    credentialsId: 'Github_credentials',
-                    url: 'https://github.com/hussamansari/microservice-cicd-kubernetes-pipeline.git'
-                )
+			    git credentialsId: 'Github_credentials', url: 'https://github.com/arshad-ahmad/django-postgres-deployment-on-eks-through-jenkins'
+			    checkout scm
 		    }
 	    }
 	    stage('Build image') {
