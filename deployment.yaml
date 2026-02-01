@@ -8,9 +8,10 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: gp3
   resources:
     requests:
-      storage: 2Gi
+      storage: 5Gi
       
 ---
 #db-configmap.yaml
@@ -44,7 +45,7 @@ metadata:
     service: db
   name: db
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       service: db
