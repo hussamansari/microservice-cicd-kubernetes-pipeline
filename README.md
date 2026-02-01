@@ -71,4 +71,22 @@ scripts/
 ```
 <img width="1920" height="436" alt="website is available and logs" src="https://github.com/user-attachments/assets/6100cd15-fbcc-4923-9b86-87fae5ed08d0" />
 
+Task 3
+Write a Kubernetes manifest to deploy and expose a web server with multiple replicas.
+
+1. Kubernetes creates a **Deployment** object for the NGINX web server.
+2. The Deployment spawns a **ReplicaSet** to maintain the desired replica count.
+3. Three **NGINX pods** are created based on the container image.
+4. Each pod is assigned a unique **IP address** inside the cluster.
+5. Kubernetes continuously monitors pod health and restarts failed pods automatically.
+6. A **Service** is created with a selector matching the pod labels.
+7. The Service maps an external port to the container’s port 80.
+8. A **LoadBalancer** is provisioned by the cloud provider.
+9. Traffic hitting the LoadBalancer is routed to the Service.
+10. The Service load-balances requests across all running NGINX pods.
+    
+├── manifests/
+│   └── nginx-deployment.yaml
+<img width="821" height="281" alt="web server with multiple replicas" src="https://github.com/user-attachments/assets/7c611120-0e0c-4226-98db-6efee3a72b32" />
+
 
