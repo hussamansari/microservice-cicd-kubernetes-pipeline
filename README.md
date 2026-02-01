@@ -62,15 +62,13 @@ Write ascript that checks if a website is available and logs the result.
 1. A shell script named `website_check.sh` is created inside the `scripts` directory of the Django project.
 2. The script checks whether a given website is reachable using an HTTP request.
 3. The execution result is logged along with the **timestamp and website URL** in `website_status.log`.
-4. The script supports checking both **domain-based URLs** and **IP with p![Uploading website is available and logs.png…]()
-ort-based URLs**.
-5. Logs are appended on every execution for continuous availability tracking.
-
+4. The script supports checking both **domain-based URLs** and **IP with port-based URLs.
 
 ```
 django/
 scripts/
     └── website_check.sh
 ```
+<img width="1920" height="436" alt="website is available and logs" src="https://github.com/user-attachments/assets/6100cd15-fbcc-4923-9b86-87fae5ed08d0" />
 
 
